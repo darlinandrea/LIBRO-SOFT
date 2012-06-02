@@ -1,6 +1,6 @@
 <?PHP 
-class TipoIdentificaci髇{
-	private $idTipo_Identificaci髇;
+class TipoIdentificaci贸n{
+	private $idTipo_Identificaci贸n;
 	private $nombre;
 	private $con;
 	public function __construct(&$db){
@@ -9,13 +9,13 @@ class TipoIdentificaci髇{
 	//Getters
 
 	public function getId(){
-		return $this->idTipo_Identificaci髇;
+		return $this->idTipo_Identificaci贸n;
 	}
 	public function getNombreId(){
-		return "idTipo_Identificaci髇";
+		return "idTipo_Identificaci贸n";
 	}
-	public function getIdTipo_Identificaci髇(){
-		return $this->idTipo_Identificaci髇;
+	public function getIdTipo_Identificaci贸n(){
+		return $this->idTipo_Identificaci贸n;
 	}
 	public function getNombre(){
 		return $this->nombre;
@@ -23,8 +23,8 @@ class TipoIdentificaci髇{
 
 	//Setters
 
-	public function setIdTipo_Identificaci髇($idTipo_Identificaci髇){
-		$this->idTipo_Identificaci髇 = $idTipo_Identificaci髇;
+	public function setIdTipo_Identificaci贸n($idTipo_Identificaci贸n){
+		$this->idTipo_Identificaci贸n = $idTipo_Identificaci贸n;
 	}
 	public function setNombre($nombre){
 		$this->nombre = $nombre;
@@ -38,28 +38,28 @@ class TipoIdentificaci髇{
 	
 	//Guarda o actualiza el objeto en la base de datos, la accion se determina por la clave primaria
 	public function save(){
-		if(empty($this->idTipo_Identificaci髇)){			
-			$this->idTipo_Identificaci髇 = $this->con->autoInsert(array(
+		if(empty($this->idTipo_Identificaci贸n)){			
+			$this->idTipo_Identificaci贸n = $this->con->autoInsert(array(
 			"nombre" => $this->getNombre(),
-			),"tipo_identificaci髇");
+			),"tipo_identificaci贸n");
 			return;
 		}
 		return $this->con->autoUpdate(array(
 			"nombre" => $this->getNombre(),
-			),"tipo_identificaci髇","idTipo_Identificaci髇=".$this->getId());
+			),"tipo_identificaci贸n","idTipo_Identificaci贸n=".$this->getId());
 	}
     
-	public function cargarPorId($idTipo_Identificaci髇){
-		if($idTipo_Identificaci髇>0){
-			$result = $this->con->query("SELECT * FROM `tipo_identificaci髇`  WHERE idTipo_Identificaci髇=".$idTipo_Identificaci髇);
-			$this->idTipo_Identificaci髇 = $result[0]['idTipo_Identificaci髇'];
+	public function cargarPorId($idTipo_Identificaci贸n){
+		if($idTipo_Identificaci贸n>0){
+			$result = $this->con->query("SELECT * FROM `tipo_identificaci贸n`  WHERE idTipo_Identificaci贸n=".$idTipo_Identificaci贸n);
+			$this->idTipo_Identificaci贸n = $result[0]['idTipo_Identificaci贸n'];
 			$this->nombre = $result[0]['nombre'];
 		}
  	}
 	public function listar($filtros = array(), $orderBy = '', $limit = "0,30", $exactMatch = false){
 		$whereA = array();
 		if(!$exactMatch){
-			$campos = $this->con->query("DESCRIBE tipo_identificaci髇");
+			$campos = $this->con->query("DESCRIBE tipo_identificaci贸n");
 			$listicos = array();
 			foreach($campos as $campo){
 				$tmp = explode("(",$campo["Type"]);
@@ -81,10 +81,10 @@ class TipoIdentificaci髇{
 			$where = 1;
 		if ($orderBy != "")
 			$orderBy = "ORDER BY $orderBy";
-		$rows =$this->con->query("SELECT * FROM `tipo_identificaci髇`  WHERE $where $orderBy LIMIT $limit");
+		$rows =$this->con->query("SELECT * FROM `tipo_identificaci贸n`  WHERE $where $orderBy LIMIT $limit");
 		$rowsI = array();
 		foreach($rows as $row){
-			$rowsI[$row["idTipo_Identificaci髇"]] = $row;
+			$rowsI[$row["idTipo_Identificaci贸n"]] = $row;
 		}
 		return $rowsI;
 	}
@@ -93,14 +93,14 @@ class TipoIdentificaci髇{
 		$rowsr = array();
 		$rows = $this->listar($filtros, $orderBy, $limit, $exactMatch);
 		foreach($rows as $row){
-			$this->cargarPorId($row["idTipo_Identificaci髇"]);
+			$this->cargarPorId($row["idTipo_Identificaci贸n"]);
 			$obj = clone $this;
-			$rowsr[$row["idTipo_Identificaci髇"]] = $obj;
+			$rowsr[$row["idTipo_Identificaci贸n"]] = $obj;
 		}
 		return $rowsr;
 	}
 	public function eliminar(){
-		return $this->con->query("DELETE FROM `tipo_identificaci髇`  WHERE idTipo_Identificaci髇=".$this->getId());
+		return $this->con->query("DELETE FROM `tipo_identificaci贸n`  WHERE idTipo_Identificaci贸n=".$this->getId());
 	}
 }
 ?>

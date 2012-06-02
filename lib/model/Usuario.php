@@ -48,13 +48,13 @@ class Usuario{
 	public function getUniversidad(){
 		return $this->universidad;
 	}
-	public function getByTipoIdentificaci髇($id_tipo_identificacion){
+	public function getByTipoIdentificaci贸n($id_tipo_identificacion){
 		return $this->listarObj(array("id_tipo_identificacion"=>$id_tipo_identificacion));
 	}
-	public function getTipoIdentificaci髇(){
-		$tipo_identificaci髇 = new TipoIdentificaci髇($this->con);
-		$tipo_identificaci髇->cargarPorId($this->id_tipo_identificacion);
-		return $tipo_identificaci髇;
+	public function getTipoIdentificaci贸n(){
+		$tipo_identificaci贸n = new TipoIdentificaci贸n($this->con);
+		$tipo_identificaci贸n->cargarPorId($this->id_tipo_identificacion);
+		return $tipo_identificaci贸n;
 	}
 
 	//Setters

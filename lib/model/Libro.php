@@ -4,7 +4,7 @@ class Libro{
 	private $id_area_conocimiento;
 	private $ISBN;
 	private $titulo;
-	private $a駉_publicaci髇;
+	private $a帽o_publicaci贸n;
 	private $idioma;
 	private $palabras_claves;
 	private $id_editorial;
@@ -35,8 +35,8 @@ class Libro{
 	public function getTitulo(){
 		return $this->titulo;
 	}
-	public function getA駉_publicaci髇(){
-		return $this->a駉_publicaci髇;
+	public function getA帽o_publicaci贸n(){
+		return $this->a帽o_publicaci贸n;
 	}
 	public function getIdioma(){
 		return $this->idioma;
@@ -87,8 +87,8 @@ class Libro{
 	public function setTitulo($titulo){
 		$this->titulo = $titulo;
 	}
-	public function setA駉_publicaci髇($a駉_publicaci髇){
-		$this->a駉_publicaci髇 = $a駉_publicaci髇;
+	public function setA帽o_publicaci贸n($a帽o_publicaci贸n){
+		$this->a帽o_publicaci贸n = $a帽o_publicaci贸n;
 	}
 	public function setIdioma($idioma){
 		$this->idioma = $idioma;
@@ -122,7 +122,7 @@ class Libro{
 			"id_area_conocimiento" => $this->getId_area_conocimiento(),
 			"ISBN" => $this->getISBN(),
 			"titulo" => $this->getTitulo(),
-			"a駉_publicaci髇" => $this->getA駉_publicaci髇(),
+			"a帽o_publicaci贸n" => $this->getA帽o_publicaci贸n(),
 			"idioma" => $this->getIdioma(),
 			"palabras_claves" => $this->getPalabras_claves(),
 			"id_editorial" => $this->getId_editorial(),
@@ -136,7 +136,7 @@ class Libro{
 			"id_area_conocimiento" => $this->getId_area_conocimiento(),
 			"ISBN" => $this->getISBN(),
 			"titulo" => $this->getTitulo(),
-			"a駉_publicaci髇" => $this->getA駉_publicaci髇(),
+			"a帽o_publicaci贸n" => $this->getA帽o_publicaci贸n(),
 			"idioma" => $this->getIdioma(),
 			"palabras_claves" => $this->getPalabras_claves(),
 			"id_editorial" => $this->getId_editorial(),
@@ -153,7 +153,7 @@ class Libro{
 			$this->id_area_conocimiento = $result[0]['id_area_conocimiento'];
 			$this->ISBN = $result[0]['ISBN'];
 			$this->titulo = $result[0]['titulo'];
-			$this->a駉_publicaci髇 = $result[0]['a駉_publicaci髇'];
+			$this->a帽o_publicaci贸n = $result[0]['a帽o_publicaci贸n'];
 			$this->idioma = $result[0]['idioma'];
 			$this->palabras_claves = $result[0]['palabras_claves'];
 			$this->id_editorial = $result[0]['id_editorial'];

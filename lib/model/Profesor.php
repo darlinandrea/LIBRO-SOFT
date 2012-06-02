@@ -4,7 +4,7 @@ class Profesor{
 	private $Usuario_idUsuario;
 	private $dependencia;
 	private $titulo;
-	private $·reas_interÈs;
+	private $√°reas_inter√©s;
 	private $con;
 	public function __construct(&$db){
 		$this->con = $db;
@@ -29,8 +29,8 @@ class Profesor{
 	public function getTitulo(){
 		return $this->titulo;
 	}
-	public function get·reas_interÈs(){
-		return $this->·reas_interÈs;
+	public function get√°reas_inter√©s(){
+		return $this->√°reas_inter√©s;
 	}
 	public function getByUsuario($Usuario_idUsuario){
 		return $this->listarObj(array("Usuario_idUsuario"=>$Usuario_idUsuario));
@@ -55,8 +55,8 @@ class Profesor{
 	public function setTitulo($titulo){
 		$this->titulo = $titulo;
 	}
-	public function set·reas_interÈs($·reas_interÈs){
-		$this->·reas_interÈs = $·reas_interÈs;
+	public function set√°reas_inter√©s($√°reas_inter√©s){
+		$this->√°reas_inter√©s = $√°reas_inter√©s;
 	}
 	//LLena todos los atributos de la clase sacando los valores de un array
 	function setValues($array){
@@ -72,7 +72,7 @@ class Profesor{
 			"Usuario_idUsuario" => $this->getUsuario_idUsuario(),
 			"dependencia" => $this->getDependencia(),
 			"titulo" => $this->getTitulo(),
-			"·reas_interÈs" => $this->get·reas_interÈs(),
+			"√°reas_inter√©s" => $this->get√°reas_inter√©s(),
 			),"profesor");
 			return;
 		}
@@ -80,7 +80,7 @@ class Profesor{
 			"Usuario_idUsuario" => $this->getUsuario_idUsuario(),
 			"dependencia" => $this->getDependencia(),
 			"titulo" => $this->getTitulo(),
-			"·reas_interÈs" => $this->get·reas_interÈs(),
+			"√°reas_inter√©s" => $this->get√°reas_inter√©s(),
 			),"profesor","idProfesor=".$this->getId());
 	}
     
@@ -91,7 +91,7 @@ class Profesor{
 			$this->Usuario_idUsuario = $result[0]['Usuario_idUsuario'];
 			$this->dependencia = $result[0]['dependencia'];
 			$this->titulo = $result[0]['titulo'];
-			$this->·reas_interÈs = $result[0]['·reas_interÈs'];
+			$this->√°reas_inter√©s = $result[0]['√°reas_inter√©s'];
 		}
  	}
 	public function listar($filtros = array(), $orderBy = '', $limit = "0,30", $exactMatch = false){
