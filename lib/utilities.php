@@ -132,7 +132,7 @@ function exchangeRateOld($amount, $currency, $exchangeIn) {
     return (float) $array['rhs'];
 }
 
-// Ejemplo: Esto mostrará el valor actual de 1 DOLAR en el EUROS
+// Ejemplo: Esto mostrarï¿½ el valor actual de 1 DOLAR en el EUROS
 // echo conversor_monedas("USD","EUR",1);
 
 function getRate($amount,$currency,$exchangeIn){
@@ -523,7 +523,7 @@ if(preg_match("^[_a-zA-Z0-9-]+(\.[_a-zA-Z0-9-]+)*@+([_a-zA-Z0-9-]+\.)*[a-zA-Z0-9
 function removeAccents($string) {
  $string = html_entity_decode($string,ENT_COMPAT,"UTF-8");
     $stripthese = ",|~|!|@|%|^|(|)|<|>|:|;|{|}|[|]|&|`|ï¿½|ï¿½|ï¿½|ï¿½|ï¿½|ï¿½|ï¿½|ï¿½|ï¿½|ï¿½|ï¿½|ï¿½";
-    $sreplacements = "Š|S, Œ|O, Ž|Z, š|s, œ|oe, ž|z, Ÿ|Y, ¥|Y, µ|u, À|A, Á|A, Â|A, Ã|A, Ä|A, Å|A, Æ|A, Ç|C, È|E, É|E, Ê|E, Ë|E, Ì|I, Í|I, Î|I, Ï|I, Ð|D, Ñ|N, Ò|O, Ó|O, Ô|O, Õ|O, Ö|O, Ø|O, Ù|U, Ú|U, Û|U, Ü|U, Ý|Y, ß|s, à|a, á|a, â|a, ã|a, ä|a, å|a, æ|a, ç|c, è|e, é|e, ê|e, ë|e, ì|i, í|i, î|i, ï|i, ð|o, ñ|n, ò|o, ó|o, ô|o, õ|o, ö|o, ø|o, ù|u, ú|u, û|u, ü|u, ý|y, ÿ|y, ß|ss";
+    $sreplacements = "ï¿½|S, ï¿½|O, ï¿½|Z, ï¿½|s, ï¿½|oe, ï¿½|z, ï¿½|Y, ï¿½|Y, ï¿½|u, ï¿½|A, ï¿½|A, ï¿½|A, ï¿½|A, ï¿½|A, ï¿½|A, ï¿½|A, ï¿½|C, ï¿½|E, ï¿½|E, ï¿½|E, ï¿½|E, ï¿½|I, ï¿½|I, ï¿½|I, ï¿½|I, ï¿½|D, ï¿½|N, ï¿½|O, ï¿½|O, ï¿½|O, ï¿½|O, ï¿½|O, ï¿½|O, ï¿½|U, ï¿½|U, ï¿½|U, ï¿½|U, ï¿½|Y, ï¿½|s, ï¿½|a, ï¿½|a, ï¿½|a, ï¿½|a, ï¿½|a, ï¿½|a, ï¿½|a, ï¿½|c, ï¿½|e, ï¿½|e, ï¿½|e, ï¿½|e, ï¿½|i, ï¿½|i, ï¿½|i, ï¿½|i, ï¿½|o, ï¿½|n, ï¿½|o, ï¿½|o, ï¿½|o, ï¿½|o, ï¿½|o, ï¿½|o, ï¿½|u, ï¿½|u, ï¿½|u, ï¿½|u, ï¿½|y, ï¿½|y, ï¿½|ss";
 
     $replacements = array();
     $items = explode(',', $sreplacements);
@@ -545,7 +545,7 @@ function seoUrl($url) {
     */
  $url = html_entity_decode($url,ENT_COMPAT,"UTF-8");
     $stripthese = ",|~|!|@|%|^|(|)|<|>|:|;|{|}|[|]|&|`|ï¿½|ï¿½|ï¿½|ï¿½|ï¿½|ï¿½|ï¿½|ï¿½|ï¿½|ï¿½|ï¿½|ï¿½";
-    $sreplacements = "Š|S, Œ|O, Ž|Z, š|s, œ|oe, ž|z, Ÿ|Y, ¥|Y, µ|u, À|A, Á|A, Â|A, Ã|A, Ä|A, Å|A, Æ|A, Ç|C, È|E, É|E, Ê|E, Ë|E, Ì|I, Í|I, Î|I, Ï|I, Ð|D, Ñ|N, Ò|O, Ó|O, Ô|O, Õ|O, Ö|O, Ø|O, Ù|U, Ú|U, Û|U, Ü|U, Ý|Y, ß|s, à|a, á|a, â|a, ã|a, ä|a, å|a, æ|a, ç|c, è|e, é|e, ê|e, ë|e, ì|i, í|i, î|i, ï|i, ð|o, ñ|n, ò|o, ó|o, ô|o, õ|o, ö|o, ø|o, ù|u, ú|u, û|u, ü|u, ý|y, ÿ|y, ß|ss";
+    $sreplacements = "ï¿½|S, ï¿½|O, ï¿½|Z, ï¿½|s, ï¿½|oe, ï¿½|z, ï¿½|Y, ï¿½|Y, ï¿½|u, ï¿½|A, ï¿½|A, ï¿½|A, ï¿½|A, ï¿½|A, ï¿½|A, ï¿½|A, ï¿½|C, ï¿½|E, ï¿½|E, ï¿½|E, ï¿½|E, ï¿½|I, ï¿½|I, ï¿½|I, ï¿½|I, ï¿½|D, ï¿½|N, ï¿½|O, ï¿½|O, ï¿½|O, ï¿½|O, ï¿½|O, ï¿½|O, ï¿½|U, ï¿½|U, ï¿½|U, ï¿½|U, ï¿½|Y, ï¿½|s, ï¿½|a, ï¿½|a, ï¿½|a, ï¿½|a, ï¿½|a, ï¿½|a, ï¿½|a, ï¿½|c, ï¿½|e, ï¿½|e, ï¿½|e, ï¿½|e, ï¿½|i, ï¿½|i, ï¿½|i, ï¿½|i, ï¿½|o, ï¿½|n, ï¿½|o, ï¿½|o, ï¿½|o, ï¿½|o, ï¿½|o, ï¿½|o, ï¿½|u, ï¿½|u, ï¿½|u, ï¿½|u, ï¿½|y, ï¿½|y, ï¿½|ss";
 
     $replacements = array();
     $items = explode(',', $sreplacements);
