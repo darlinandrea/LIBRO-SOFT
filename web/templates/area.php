@@ -2,4 +2,4 @@
 $this->extend('layout');
 ?><h1>Area</h1>
 
-<a href="agregar"
+<a href="agregar">Agregar</a>
