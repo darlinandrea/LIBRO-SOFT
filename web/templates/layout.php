@@ -8,13 +8,17 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <!-- IE render the webpage using lastest version, eg: IE9 or IE8 -->
 <?php echo $this->stylesheets; ?>
-<script type="text/javascript" src="web/javascript/jquery-1.7.2.js"></script>
+<link type="text/css" rel="stylesheet" href="web/css/common.css" />
+<script type="text/javascript" src="web/javascript/jquery.min.js"></script>
 <!-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>  -->
 <script type="text/javascript" src="web/javascript/common.js"></script>
 <?php echo $this->javascripts; ?>
 </head>
 
 <body>
+<ul>
+	<li><a href="?ac=area">Area</a></li>
+</ul>
 <div id="content">
   <?php $this->output('content') ?>
 </div>

@@ -33,7 +33,7 @@ define("DB_SERVER_LOCAL", "localhost");
 define("DB_NAME_LOCAL", "LIBROSOFT");
 // END CONFIG
 // Template PATHs
-define("FRONTEND_PATH_TEMPLATES", "web/templates");
+define("FRONTEND_PATH_TEMPLATES", realpath(dirname(__FILE__)."/../web/templates"));
 define("FRONTEND_PATH_CONTROLLERS", "controller");
 if (in_array($_SERVER['SERVER_ADDR'], array("127.0.0.1", "localhost")))
 {
