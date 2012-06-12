@@ -7,18 +7,19 @@ echo $msg;
 <input type="button" id="mostrarFormArea" value="Mostrar Formulario"  />
 
 <form action="" method="post" enctype="application/x-www-form-urlencoded" id="formularioArea">
+<input type="hidden" name="id" value="<?PHP echo $area["idArea"];?>" />
   <table width="200" border="0">
     <tr>
       <td>Area</td>
-      <td><input type="text" name="area" id="area" /></td>
+      <td><input type="text" name="area" id="area" value="<?PHP echo $area["area"];?>" /></td>
     </tr>
     <tr>
       <td>C&oacute;digo</td>
-      <td><input type="text" name="codigo" id="codigo" /></td>
+      <td><input type="text" name="codigo" id="codigo" value="<?PHP echo $area["codigo"];?>" /></td>
     </tr>
     <tr>
       <td>Descripci&oacute;n</td>
-      <td><input type="text" name="descripcion" id="descripcion" /></td>
+      <td><input type="text" name="descripcion" id="descripcion" value="<?PHP echo $area["descripcion"];?>" /></td>
     </tr>
     <tr>
       <td>&nbsp;</td>
@@ -26,3 +27,24 @@ echo $msg;
     </tr>
   </table>
 </form>
+
+<table>
+<tr>
+	<th>C&oacute;digo</th>
+    <th>Area</th>
+    <th>Descripcion</th>
+</tr>
+<?PHP
+foreach($areas as $area){
+?>
+<tr>
+	<td><?PHP echo $area["codigo"];?></td>
+    <td><?PHP echo $area["area"];?></td>
+	<td><?PHP echo $area["descripcion"];?></td>
+    <td><a href="?ac=area&accion=editar&id=<?PHP echo $area["idArea"];?>">Editar</a></td>
+    <td><a href="?ac=area&accion=eliminar&id=<?PHP echo $area["idArea"];?>">Eliminar</a></td>
+</tr>
+<?PHP
+}
+?>
+</table>

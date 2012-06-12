@@ -110,10 +110,9 @@ class DBNative
 			echo "<pre>Database: {$this->db}".print_r($this->query("SHOW PROCESSLIST"),true)."</pre>";
 			$msg = "Invalid query: $SQL <br />\r\n [".$error."]";
 			$body = $msg."\r\n".print_r($_SERVER, true)."\r\n".print_r(@$_SESSION, true)."\r\n".print_r($_REQUEST, true);
-			//@mail("jose.nobile@latinoaustralia.com,jalvarado@latinoaustralia.com, dlucumi@latinoaustralia.com",
-			//	"Invalid Query: $SQL", $body, "From:database@cali.latinoaustralia.com");
+			
 			die($msg . "<br />\r\n" .
-				"Please report this error to it@latinoaustralia.com");
+				"Please report this error to support@librosoft.com");
 		}
 		if (is_resource($result))
 		{
@@ -159,10 +158,8 @@ class DBNative
 		else{
 			$msg = "Transaction already started <br />\r\n" . @mysql_error($this->link);
 			$body = $msg . "\r\n " . print_r($GLOBALS, true);
-			@mail("jose.nobile@latinoaustralia.com,jalvarado@latinoaustralia.com",
-				"Transaction already started", $body, "From:database@cali.latinoaustralia.com");
 			die($msg . "<br />\r\n" .
-				"Please report this error to jose.nobile@latinoaustralia.com");
+				"Please report this error to support@librosoft.com");
 		}
 	}
 	//Save transaction
@@ -174,11 +171,9 @@ class DBNative
 		}
 		else{
 			$msg = "Transaction is not already started (not commit possible) <br />\r\n" . @mysql_error($this->link);
-			$body = $msg . "\r\n " . print_r($GLOBALS, true);
-			@mail("jose.nobile@latinoaustralia.com,jalvarado@latinoaustralia.com",
-				"Transaction already started (not commit possible)", $body, "From:database@cali.latinoaustralia.com");
+			$body = $msg . "\r\n " . print_r($GLOBALS, true);		
 			die($msg . "<br />\r\n" .
-				"Please report this error to jose.nobile@latinoaustralia.com");
+				"Please report this error to support@librosoft.com");
 		}
 	}
 	//Rollback the transaction
@@ -191,10 +186,8 @@ class DBNative
 		else{
 			$msg = "Transaction is not already started (not rollback possible) <br />\r\n" . @mysql_error($this->link);
 			$body = $msg . "\r\n " . print_r($GLOBALS, true);
-			@mail("jose.nobile@latinoaustralia.com,jalvarado@latinoaustralia.com",
-				"Transaction already started (not rollback possible)", $body, "From:database@cali.latinoaustralia.com");
 			die($msg . "<br />\r\n" .
-				"Please report this error to jose.nobile@latinoaustralia.com");
+				"Please report this error to support@librosoft.com");
 		}
 	}
 	//execute a array of queries in a transaction, if query return none affected rows... rollback transaction
@@ -274,7 +267,7 @@ class DBNative
 			$value = stripslashes($value);
 		$escapedValue = mysql_real_escape_string($value, $this->link);
 		if($escapedValue === FALSE){
-			echo ("Unknow error, please send the next text to it@latinoaustralia.com <br />".mysql_error($this->link)." escaping: <br >".htmlentities($value)." length:".strlen($ovalue));
+			echo ("Unknow error, please send the next text to support@librosoft.com <br />".mysql_error($this->link)." escaping: <br >".htmlentities($value)." length:".strlen($ovalue));
 			var_dump($escapedValue);
 		}
 		return "$escapedValue";

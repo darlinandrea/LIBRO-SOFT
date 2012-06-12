@@ -11,19 +11,32 @@ class AreaController {
 	}
 	public function manejadorDeAcciones() {
 		if ($_SERVER["REQUEST_METHOD"] == "POST") {
-			$this->guardar();
+			$this->guardar($_POST["id"]);
 		}
 		if (@$_GET["accion"] == "eliminar" && $_GET["id"] > 0) {
 			$this->eliminar(intval($_GET["id"]));
 		}
+		if (@$_GET["accion"] == "editar" && $_GET["id"] > 0) {
+			$this->cargarPorId(intval($_GET["id"]));
+		}
 		$this->consultar();
 		$this->mostarPlantilla();
 	}
-	private function guardar() {
-		$this->area->cargarPorId($_POST["idArea"]);
+	private function guardar($id) {
+		$this->area->cargarPorId($id);
 		$this->area->setValues($_POST);
 		$this->area->save();
-		$this->aParams["message"] = "The operation was suffescully completed, you are very lucky!! be happy my friend!! bye bye";
+		$this->aParams["msg"] = "The operation was suffescully completed, you are very lucky!! be happy my friend!! bye bye";
+	}
+	
+	public function cargarPorId($id){
+		$this->area->cargarPorId($id);
+		$this->aParams["area"] = array(
+				"idArea" => $this->area->getId(),
+				"area" => $this->area->getArea(),
+				"codigo" => $this->area->getCodigo(),
+				"descripcion" => $this->area->getDescripcion()
+		);
 	}
 
 	private function eliminar($id) {
@@ -37,6 +50,7 @@ class AreaController {
 		$areas = $this->area->listarObj();
 		foreach ($areas as $area) {
 			$this->aParams["areas"][] = array(
+				"idArea" => $area->getId(),
 				"area" => $area->getArea(),
 				"codigo" => $area->getCodigo(),
 				"descripcion" => $area->getDescripcion()

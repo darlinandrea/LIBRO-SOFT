@@ -12,5 +12,4 @@ switch($_GET["ac"]){
 		echo $engine->render('index', $aParams);
 	break;	
 }
-// Probando con git!!
 ?>
