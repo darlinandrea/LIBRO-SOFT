@@ -81,6 +81,10 @@ foreach($tablas as $tabla)
 	}
 	//Inteligencia artificial
 	$create = $con->query("SHOW CREATE TABLE `$tabla`");
+	if(!isset($create[0]["Create Table"])){
+		echo "Saltando $tabla por que no es un base tabla<br />";	
+		continue;
+	}
 	$lineas = explode("\n",$create[0]["Create Table"]);
 	$foraneas = array();
 	//echo "<pre>".print_r($lineas,true)."</pre>";
@@ -129,10 +133,11 @@ foreach($campos as $campo)
 ?><?PHP
 if($campo["Field"]==$primary)//Un lindo "alias"
 {
+	if($campo["Field"] != "id"){
 ?>
 	public function getId(){
 		return $this-><?PHP echo $campo["Field"];?>;
-	}
+	}<?PHP } ?>
 	public function getNombreId(){
 		return "<?PHP echo $campo["Field"];?>";
 	}
@@ -207,7 +212,7 @@ foreach($campos as $campo)
 ?>
 		}
  	}
-	public function listar($filtros = array(), $orderBy = '', $limit = "0,30", $exactMatch = false){
+	public function listar($filtros = array(), $orderBy = '', $limit = "0,30", $exactMatch = false, $fields = '*'){
 		$whereA = array();
 		if(!$exactMatch){
 			$campos = $this->con->query("DESCRIBE <?PHP echo $tabla;?>");
@@ -232,7 +237,7 @@ foreach($campos as $campo)
 			$where = 1;
 		if ($orderBy != "")
 			$orderBy = "ORDER BY $orderBy";
-		$rows =$this->con->query("SELECT * FROM `<?PHP echo $tabla;?>`  WHERE $where $orderBy LIMIT $limit");
+		$rows =$this->con->query("SELECT $fields,<?PHP echo $primary;?> FROM `<?PHP echo $tabla;?>`  WHERE $where $orderBy LIMIT $limit");
 		$rowsI = array();
 		foreach($rows as $row){
 			$rowsI[$row["<?PHP echo $primary;?>"]] = $row;
@@ -240,12 +245,12 @@ foreach($campos as $campo)
 		return $rowsI;
 	}
 	//como listar, pero retorna un array de objetos
-	function listarObj($filtros = array(), $orderBy = '', $limit = "0,30", $exactMatch = false){
+	function listarObj($filtros = array(), $orderBy = '', $limit = "0,30", $exactMatch = false, $fields = '*'){
 		$rowsr = array();
-		$rows = $this->listar($filtros, $orderBy, $limit, $exactMatch);
+		$rows = $this->listar($filtros, $orderBy, $limit, $exactMatch, $fields);
 		foreach($rows as $row){
-			$this->cargarPorId($row["<?PHP echo $primary;?>"]);
 			$obj = clone $this;
+			$obj->cargarPorId($row["<?PHP echo $primary;?>"]);
 			$rowsr[$row["<?PHP echo $primary;?>"]] = $obj;
 		}
 		return $rowsr;
