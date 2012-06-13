@@ -1,5 +1,8 @@
 <?PHP
+<<<<<<< HEAD
 
+=======
+>>>>>>> 5e9e85be431ad0a5407e4c233639d3414cb8c927
 class AreaController {
 	private $area;
 	private $aParams;
