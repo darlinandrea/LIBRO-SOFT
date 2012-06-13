@@ -1,0 +1,21 @@
+//*********************************************
+// DESARROLLO DE SOFTWARE II
+// PROYECTO FINAL: LIBRO-SOFT
+//
+// PROYECTO WEB USANDO PHP/MYSQL HTML/CSS/JAVASCRIPT
+//
+// FECHA INICIACION: MARZO DE 2012
+//
+// AUTORES:
+// Gustavo Adolfo Rodriguez    
+// gustalibreros@hotmail.com
+//
+// José Antonio Nobile Rendón
+// Jose.Nobile@gmail.com
+//
+// Roberto Ceballos            
+// robertrock2000@gmail.com
+//
+// ESCUELA DE INGENIERIA DE SISTEMAS Y COMPUTACION
+// UNIVERSIDAD DEL VALLE
+//********************************************

@@ -1,0 +1,4 @@
+cache/*
+*/templates_c/*
+sql/backups/*
+uploads/*
