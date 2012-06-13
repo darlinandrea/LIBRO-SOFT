@@ -1,4 +1,4 @@
-//*********************************************
+//********************************************
 // DESARROLLO DE SOFTWARE II
 // PROYECTO FINAL: LIBRO-SOFT
 //
@@ -18,4 +18,4 @@
 //
 // ESCUELA DE INGENIERIA DE SISTEMAS Y COMPUTACION
 // UNIVERSIDAD DEL VALLE
-//********************************************
+//*******************************************

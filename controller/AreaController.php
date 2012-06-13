@@ -1,4 +1,5 @@
 <?PHP
+
 class AreaController {
 	private $area;
 	private $aParams;
