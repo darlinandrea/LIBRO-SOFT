@@ -39,8 +39,8 @@ foreach($carreras as $carrera){
 <tr>
 	<td><?PHP echo $carrera["codigo"];?></td>
     <td><?PHP echo $carrera["carrera"];?></td>
-    <td><a href="?ac=carrera&accion=editar&id=<?PHP echo $carrera["idArea"];?>">Editar</a></td>
-    <td><a href="?ac=carrera&accion=eliminar&id=<?PHP echo $carrera["idArea"];?>">Eliminar</a></td>
+    <td><a href="?ac=carrera&accion=editar&id=<?PHP echo $carrera["idCarrera"];?>">Editar</a></td>
+    <td><a href="?ac=carrera&accion=eliminar&id=<?PHP echo $carrera["idCarrera"];?>">Eliminar</a></td>
 </tr>
 <?PHP
 }
