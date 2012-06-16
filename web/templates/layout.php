@@ -19,6 +19,7 @@
 <ul>
 	<li><a href="./">Home</a></li>
     <li><a href="?ac=area">Area</a></li>
+	<li><a href="?ac=carrera">Carrera</a></li>
 </ul>
 <div id="content">
   <?php $this->output('content') ?>
