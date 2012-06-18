@@ -7,10 +7,18 @@
 <meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <!-- IE render the webpage using lastest version, eg: IE9 or IE8 -->
+<link href="web/javascript/jquery-ui/css/ui-lightness/jquery-ui-1.8.5.custom.css" rel="stylesheet" type="text/css" media="all" /> 
 <?php echo $this->stylesheets; ?>
 <link type="text/css" rel="stylesheet" href="web/css/common.css" />
 <script type="text/javascript" src="web/javascript/jquery.min.js"></script>
 <!-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>  -->
+<script type="text/javascript" src="web/javascript/jquery.inputautoresize.js"></script>
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
+<link rel="stylesheet" type="text/css" href="web/javascript/DataTables-1.9.1/media/css/demo_table_jui.css">
+<script type="application/javascript" src="web/javascript/DataTables-1.9.1/media/js/jquery.dataTables.min.js"></script>
+<script type="application/javascript" src="web/javascript/DataTables-1.9.1/extras/Scroller/media/js/Scroller.min.js"></script>
+<script type="application/javascript" src="web/javascript/DataTables-1.9.1/extras/ColumnFilter/jquery.dataTables.columnFilter.js"></script>
+<script type="text/javascript" src="web/javascript/jquery.form.js"></script>
 <script type="text/javascript" src="web/javascript/common.js"></script>
 <?php echo $this->javascripts; ?>
 </head>

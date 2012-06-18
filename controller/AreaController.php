@@ -5,11 +5,14 @@ class AreaController {
 	private $motorDePlantilas;
 
 	public function AreaController(DBNative $con, sfTemplateEngine &$engine) {
-		$this->area = new Area($con);
+		$this->area = new AreaModel($con);
 		$this->aParams = Array();
 		$this->motorDePlantilas = $engine;
 	}
 	public function manejadorDeAcciones() {
+		if(@$_REQUEST['sEcho'] != ""){
+			die($this->area->getPager(array("Codigo","Area","Descripcion"))->getJSON());
+		}
 		if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			$this->guardar($_POST["id"]);
 		}

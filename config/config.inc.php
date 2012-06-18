@@ -51,12 +51,12 @@ $utf82 = $con->query("SET character_set_client = 'utf8'");
 $utf83 = $con->query("SET character_set_connection = 'utf8'");
 $utf84 = $con->query("SET character_set_database = 'utf8'");
 $utf85 = $con->query("SET character_set_server = 'utf8'");
-foreach (glob("lib/*.php") as $fileName)
-{
-	require_once $fileName;
-}
 foreach (glob("lib/model/*.php") as $fileName)
 {
 	require $fileName;
+}
+foreach (glob("lib/*.php") as $fileName)
+{
+	require_once $fileName;
 }
 ?>

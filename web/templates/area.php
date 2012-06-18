@@ -28,23 +28,38 @@ echo $msg;
   </table>
 </form>
 
-<table>
-<tr>
-	<th>C&oacute;digo</th>
-    <th>Area</th>
-    <th>Descripcion</th>
-</tr>
+<table id="tArea">
+  <thead>
+		<tr>
+			<th>idArea</th>
+			<th>Codigo</th>
+			<th>Area</th>
+			<th>Descripcion</th>
+			<th>Action</th>
+		</tr>
+	</thead>
+	<tfoot>
+		<tr>
+			<th>idArea</th>
+			<th>Codigo</th>
+			<th>Area</th>
+			<th>Descripcion</th>
+			<th>Action</th>
+		</tr>
+	</tfoot>
+    <tbody>
 <?PHP
 foreach($areas as $area){
 ?>
 <tr>
+	<td><?PHP echo $area["idArea"];?></td>
 	<td><?PHP echo $area["codigo"];?></td>
     <td><?PHP echo $area["area"];?></td>
 	<td><?PHP echo $area["descripcion"];?></td>
-    <td><a href="?ac=area&accion=editar&id=<?PHP echo $area["idArea"];?>">Editar</a></td>
-    <td><a href="?ac=area&accion=eliminar&id=<?PHP echo $area["idArea"];?>">Eliminar</a></td>
+    <td><a href="?ac=area&accion=editar&id=<?PHP echo $area["idArea"];?>">Editar</a><a href="?ac=area&accion=eliminar&id=<?PHP echo $area["idArea"];?>">Eliminar</a></td>
 </tr>
 <?PHP
 }
 ?>
+</tbody>
 </table>
