@@ -220,7 +220,7 @@ class Pager{
 					/* Special output formatting for 'version' column */
 					$row[] = displayDate($aRow[ $aColumns[$i] ], "d/m/Y");
 				}
-				else if ( $aColumns[$i] != ' ' )
+				else //if ( $aColumns[$i] != ' ' )
 				{
 					/* General output */
 					$row[] = $aRow[ $aColumns[$i] ];

@@ -11,7 +11,7 @@ class AreaController {
 	}
 	public function manejadorDeAcciones() {
 		if(@$_REQUEST['sEcho'] != ""){
-			die($this->area->getPager(array("Codigo","Area","Descripcion"))->getJSON());
+			die($this->area->getPager(array("idArea","Codigo","Area","Descripcion"))->getJSON());
 		}
 		if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			$this->guardar($_POST["id"]);
