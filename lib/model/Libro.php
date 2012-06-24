@@ -11,16 +11,15 @@ class Libro{
 	private $caratula;
 	private $archivo;
 	private $fecha_ingreso;
-	private $con;
-	public function __construct(&$db){
-		$this->con = $db;
+	protected $con;
+	public function __construct(){
+		$this->con = DBNative::get();
 	}
 	//Getters
 
 	public function getId(){
 		return $this->idLibro;
-	}
-	public function getNombreId(){
+	}	public function getNombreId(){
 		return "idLibro";
 	}
 	public function getIdLibro(){
@@ -56,14 +55,6 @@ class Libro{
 	public function getFecha_ingreso(){
 		return $this->fecha_ingreso;
 	}
-	public function getByArea($id_area_conocimiento){
-		return $this->listarObj(array("id_area_conocimiento"=>$id_area_conocimiento));
-	}
-	public function getArea(){
-		$area = new Area($this->con);
-		$area->cargarPorId($this->id_area_conocimiento);
-		return $area;
-	}
 	public function getByEditorial($id_editorial){
 		return $this->listarObj(array("id_editorial"=>$id_editorial));
 	}
@@ -71,6 +62,14 @@ class Libro{
 		$editorial = new Editorial($this->con);
 		$editorial->cargarPorId($this->id_editorial);
 		return $editorial;
+	}
+	public function getByArea($id_area_conocimiento){
+		return $this->listarObj(array("id_area_conocimiento"=>$id_area_conocimiento));
+	}
+	public function getArea(){
+		$area = new Area($this->con);
+		$area->cargarPorId($this->id_area_conocimiento);
+		return $area;
 	}
 
 	//Setters
@@ -162,7 +161,7 @@ class Libro{
 			$this->fecha_ingreso = $result[0]['fecha_ingreso'];
 		}
  	}
-	public function listar($filtros = array(), $orderBy = '', $limit = "0,30", $exactMatch = false){
+	public function listar($filtros = array(), $orderBy = '', $limit = "0,30", $exactMatch = false, $fields = '*'){
 		$whereA = array();
 		if(!$exactMatch){
 			$campos = $this->con->query("DESCRIBE libro");
@@ -187,7 +186,7 @@ class Libro{
 			$where = 1;
 		if ($orderBy != "")
 			$orderBy = "ORDER BY $orderBy";
-		$rows =$this->con->query("SELECT * FROM `libro`  WHERE $where $orderBy LIMIT $limit");
+		$rows =$this->con->query("SELECT $fields,idLibro FROM `libro`  WHERE $where $orderBy LIMIT $limit");
 		$rowsI = array();
 		foreach($rows as $row){
 			$rowsI[$row["idLibro"]] = $row;
@@ -195,12 +194,12 @@ class Libro{
 		return $rowsI;
 	}
 	//como listar, pero retorna un array de objetos
-	function listarObj($filtros = array(), $orderBy = '', $limit = "0,30", $exactMatch = false){
+	function listarObj($filtros = array(), $orderBy = '', $limit = "0,30", $exactMatch = false, $fields = '*'){
 		$rowsr = array();
-		$rows = $this->listar($filtros, $orderBy, $limit, $exactMatch);
+		$rows = $this->listar($filtros, $orderBy, $limit, $exactMatch, $fields);
 		foreach($rows as $row){
-			$this->cargarPorId($row["idLibro"]);
 			$obj = clone $this;
+			$obj->cargarPorId($row["idLibro"]);
 			$rowsr[$row["idLibro"]] = $obj;
 		}
 		return $rowsr;

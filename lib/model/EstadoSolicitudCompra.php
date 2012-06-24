@@ -2,16 +2,15 @@
 class EstadoSolicitudCompra{
 	private $idEstado_Solicitud_Compra;
 	private $estado;
-	private $con;
-	public function __construct(&$db){
-		$this->con = $db;
+	protected $con;
+	public function __construct(){
+		$this->con = DBNative::get();
 	}
 	//Getters
 
 	public function getId(){
 		return $this->idEstado_Solicitud_Compra;
-	}
-	public function getNombreId(){
+	}	public function getNombreId(){
 		return "idEstado_Solicitud_Compra";
 	}
 	public function getIdEstado_Solicitud_Compra(){
@@ -56,7 +55,7 @@ class EstadoSolicitudCompra{
 			$this->estado = $result[0]['estado'];
 		}
  	}
-	public function listar($filtros = array(), $orderBy = '', $limit = "0,30", $exactMatch = false){
+	public function listar($filtros = array(), $orderBy = '', $limit = "0,30", $exactMatch = false, $fields = '*'){
 		$whereA = array();
 		if(!$exactMatch){
 			$campos = $this->con->query("DESCRIBE estado_solicitud_compra");
@@ -81,7 +80,7 @@ class EstadoSolicitudCompra{
 			$where = 1;
 		if ($orderBy != "")
 			$orderBy = "ORDER BY $orderBy";
-		$rows =$this->con->query("SELECT * FROM `estado_solicitud_compra`  WHERE $where $orderBy LIMIT $limit");
+		$rows =$this->con->query("SELECT $fields,idEstado_Solicitud_Compra FROM `estado_solicitud_compra`  WHERE $where $orderBy LIMIT $limit");
 		$rowsI = array();
 		foreach($rows as $row){
 			$rowsI[$row["idEstado_Solicitud_Compra"]] = $row;
@@ -89,12 +88,12 @@ class EstadoSolicitudCompra{
 		return $rowsI;
 	}
 	//como listar, pero retorna un array de objetos
-	function listarObj($filtros = array(), $orderBy = '', $limit = "0,30", $exactMatch = false){
+	function listarObj($filtros = array(), $orderBy = '', $limit = "0,30", $exactMatch = false, $fields = '*'){
 		$rowsr = array();
-		$rows = $this->listar($filtros, $orderBy, $limit, $exactMatch);
+		$rows = $this->listar($filtros, $orderBy, $limit, $exactMatch, $fields);
 		foreach($rows as $row){
-			$this->cargarPorId($row["idEstado_Solicitud_Compra"]);
 			$obj = clone $this;
+			$obj->cargarPorId($row["idEstado_Solicitud_Compra"]);
 			$rowsr[$row["idEstado_Solicitud_Compra"]] = $obj;
 		}
 		return $rowsr;

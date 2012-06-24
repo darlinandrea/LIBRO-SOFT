@@ -7,16 +7,15 @@ class SolucitudCompraLibros{
 	private $descripcion;
 	private $titulo;
 	private $fecha_solicitud;
-	private $con;
-	public function __construct(&$db){
-		$this->con = $db;
+	protected $con;
+	public function __construct(){
+		$this->con = DBNative::get();
 	}
 	//Getters
 
 	public function getId(){
 		return $this->idSolucitud_Compra_Libros;
-	}
-	public function getNombreId(){
+	}	public function getNombreId(){
 		return "idSolucitud_Compra_Libros";
 	}
 	public function getIdSolucitud_Compra_Libros(){
@@ -122,7 +121,7 @@ class SolucitudCompraLibros{
 			$this->fecha_solicitud = $result[0]['fecha_solicitud'];
 		}
  	}
-	public function listar($filtros = array(), $orderBy = '', $limit = "0,30", $exactMatch = false){
+	public function listar($filtros = array(), $orderBy = '', $limit = "0,30", $exactMatch = false, $fields = '*'){
 		$whereA = array();
 		if(!$exactMatch){
 			$campos = $this->con->query("DESCRIBE solucitud_compra_libros");
@@ -147,7 +146,7 @@ class SolucitudCompraLibros{
 			$where = 1;
 		if ($orderBy != "")
 			$orderBy = "ORDER BY $orderBy";
-		$rows =$this->con->query("SELECT * FROM `solucitud_compra_libros`  WHERE $where $orderBy LIMIT $limit");
+		$rows =$this->con->query("SELECT $fields,idSolucitud_Compra_Libros FROM `solucitud_compra_libros`  WHERE $where $orderBy LIMIT $limit");
 		$rowsI = array();
 		foreach($rows as $row){
 			$rowsI[$row["idSolucitud_Compra_Libros"]] = $row;
@@ -155,12 +154,12 @@ class SolucitudCompraLibros{
 		return $rowsI;
 	}
 	//como listar, pero retorna un array de objetos
-	function listarObj($filtros = array(), $orderBy = '', $limit = "0,30", $exactMatch = false){
+	function listarObj($filtros = array(), $orderBy = '', $limit = "0,30", $exactMatch = false, $fields = '*'){
 		$rowsr = array();
-		$rows = $this->listar($filtros, $orderBy, $limit, $exactMatch);
+		$rows = $this->listar($filtros, $orderBy, $limit, $exactMatch, $fields);
 		foreach($rows as $row){
-			$this->cargarPorId($row["idSolucitud_Compra_Libros"]);
 			$obj = clone $this;
+			$obj->cargarPorId($row["idSolucitud_Compra_Libros"]);
 			$rowsr[$row["idSolucitud_Compra_Libros"]] = $obj;
 		}
 		return $rowsr;

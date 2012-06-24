@@ -1,6 +1,6 @@
 <?PHP 
 //Class Generator
-require_once "config/DBNative.php";
+require_once "lib/DBNative.php";
 //require_once 'frontend_tpl_conf.php';
 $fileConf = realpath(dirname(__FILE__))."/config/databases.ini";
 if (file_exists($fileConf) && is_readable($fileConf)) {
@@ -25,7 +25,7 @@ else{
 	define("DSN", "mysql://".DB_USER.":".DB_PASS."@".DB_SERVER."/".DB_NAME);
 }
 
-$con = new DBNative(DSN);
+$con =  DBNative::get(DSN);
 $inicio = microtime(true);
 function printCode($source_code)
     {
@@ -121,9 +121,9 @@ foreach($campos as $campo)
 <?PHP
 }//foreach de campos
 ?>
-	private $con;
-	public function __construct(&$db){
-		$this->con = $db;
+	protected $con;
+	public function __construct(){
+		$this->con = DBNative::get();
 	}
 	//Getters
 
@@ -275,7 +275,7 @@ foreach($contenidos as $clase => $codigo){
 		die("Error al compilar el codigo, el codigo fue <br /><pre>".printCode("<?PHP ".$codigo)."</pre>");
 	$codigo = "<"."?"."PHP"." ".$codigo."\r\n?".">";
 	$ruta = "lib/model/{$clase}.php";
-	file_put_contents($ruta,$codigo) or die("Error al grabar $ruta");
+	file_put_contents($ruta,utf8_encode($codigo)) or die("Error al grabar $ruta");
 	echo "Guardado $ruta <br />";
 	$lineas += count(explode("\n",$codigo));
 	//echo "<pre>".htmlentities($codigo,ENT_COMPAT,"UTF-8")."</pre>";

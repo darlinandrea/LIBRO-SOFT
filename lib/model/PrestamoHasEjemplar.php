@@ -3,16 +3,15 @@ class PrestamoHasEjemplar{
 	private $idPrestamo_Ejemplar;
 	private $Prestamo_idPrestamo;
 	private $Ejemplar_idEjemplar;
-	private $con;
-	public function __construct(&$db){
-		$this->con = $db;
+	protected $con;
+	public function __construct(){
+		$this->con = DBNative::get();
 	}
 	//Getters
 
 	public function getId(){
 		return $this->idPrestamo_Ejemplar;
-	}
-	public function getNombreId(){
+	}	public function getNombreId(){
 		return "idPrestamo_Ejemplar";
 	}
 	public function getIdPrestamo_Ejemplar(){
@@ -82,7 +81,7 @@ class PrestamoHasEjemplar{
 			$this->Ejemplar_idEjemplar = $result[0]['Ejemplar_idEjemplar'];
 		}
  	}
-	public function listar($filtros = array(), $orderBy = '', $limit = "0,30", $exactMatch = false){
+	public function listar($filtros = array(), $orderBy = '', $limit = "0,30", $exactMatch = false, $fields = '*'){
 		$whereA = array();
 		if(!$exactMatch){
 			$campos = $this->con->query("DESCRIBE prestamo_has_ejemplar");
@@ -107,7 +106,7 @@ class PrestamoHasEjemplar{
 			$where = 1;
 		if ($orderBy != "")
 			$orderBy = "ORDER BY $orderBy";
-		$rows =$this->con->query("SELECT * FROM `prestamo_has_ejemplar`  WHERE $where $orderBy LIMIT $limit");
+		$rows =$this->con->query("SELECT $fields,idPrestamo_Ejemplar FROM `prestamo_has_ejemplar`  WHERE $where $orderBy LIMIT $limit");
 		$rowsI = array();
 		foreach($rows as $row){
 			$rowsI[$row["idPrestamo_Ejemplar"]] = $row;
@@ -115,12 +114,12 @@ class PrestamoHasEjemplar{
 		return $rowsI;
 	}
 	//como listar, pero retorna un array de objetos
-	function listarObj($filtros = array(), $orderBy = '', $limit = "0,30", $exactMatch = false){
+	function listarObj($filtros = array(), $orderBy = '', $limit = "0,30", $exactMatch = false, $fields = '*'){
 		$rowsr = array();
-		$rows = $this->listar($filtros, $orderBy, $limit, $exactMatch);
+		$rows = $this->listar($filtros, $orderBy, $limit, $exactMatch, $fields);
 		foreach($rows as $row){
-			$this->cargarPorId($row["idPrestamo_Ejemplar"]);
 			$obj = clone $this;
+			$obj->cargarPorId($row["idPrestamo_Ejemplar"]);
 			$rowsr[$row["idPrestamo_Ejemplar"]] = $obj;
 		}
 		return $rowsr;

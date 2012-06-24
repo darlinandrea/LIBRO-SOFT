@@ -7,7 +7,7 @@ echo $msg;
 <input type="button" id="mostrarFormArea" value="Mostrar Formulario"  />
 
 <form action="" method="post" enctype="application/x-www-form-urlencoded" id="formularioArea">
-<input type="hidden" name="id" value="<?PHP echo $area["idArea"];?>" />
+<input type="hidden" name="idArea" value="<?PHP echo $area["idArea"];?>" />
   <table width="200" border="0">
     <tr>
       <td>Area</td>
@@ -23,10 +23,14 @@ echo $msg;
     </tr>
     <tr>
       <td>&nbsp;</td>
-      <td><input type="submit" value="Enviar" /></td>
+      <td><input type="submit" value="Enviar" /><input type="button" class="clear" value="Limpiar"/></td>
     </tr>
   </table>
 </form>
+
+<div id="result">
+
+</div>
 
 <table id="tArea">
   <thead>

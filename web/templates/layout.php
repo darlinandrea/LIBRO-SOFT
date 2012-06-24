@@ -19,6 +19,7 @@
 <script type="application/javascript" src="web/javascript/DataTables-1.9.1/extras/Scroller/media/js/Scroller.min.js"></script>
 <script type="application/javascript" src="web/javascript/DataTables-1.9.1/extras/ColumnFilter/jquery.dataTables.columnFilter.js"></script>
 <script type="text/javascript" src="web/javascript/jquery.form.js"></script>
+<script type="text/javascript" src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.8.1/jquery.validate.min.js"></script>
 <script type="text/javascript" src="web/javascript/common.js"></script>
 <?php echo $this->javascripts; ?>
 </head>

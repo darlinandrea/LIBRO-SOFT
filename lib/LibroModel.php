@@ -1,5 +1,5 @@
 <?PHP
-class AreaModel extends Area{
+class LibroModel  extends Libro{
 	public function _construct(){
 		parent::__construct();
 	}	
@@ -11,7 +11,10 @@ class AreaModel extends Area{
 		if($where == '')
 			$where = 1;
 		$pager = new Pager($this->con,
-				"(SELECT idArea, codigo as Codigo, area as Area, descripcion as Descripcion FROM Area WHERE {$where}) a",
+				"(SELECT idLibro, ISBN, titulo as Titulo, año_publicación as Año, area as Area
+				FROM Libro l
+				INNER JOIN Area a on l.id_area_conocimiento = a.idArea  
+				WHERE {$where}) a",
 			$columns, $this->getNombreId());
 		return $pager;
 	}

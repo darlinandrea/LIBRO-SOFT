@@ -1,53 +1,53 @@
 <?PHP
 class AreaController {
-	private $area;
+	private $libro;
 	private $aParams;
 	private $motorDePlantilas;
 
 	public function AreaController(sfTemplateEngine &$engine) {
-		$this->area = new AreaModel();
+		$this->libro = new LibroModel();
 		$this->aParams = Array();
 		$this->motorDePlantilas = $engine;
 	}
 	public function manejadorDeAcciones() {
 		if(@$_REQUEST['sEcho'] != ""){
-			die($this->area->getPager(array("idArea","Codigo","Area","Descripcion"))->getJSON());
+			die($this->libro->getPager(array("idLibro", "ISBN", "Titulo", "Año","Area"))->getJSON());
 		}
 		if ($_SERVER["REQUEST_METHOD"] == "POST") {
-			$this->guardar($_POST["idArea"]);
+			$this->guardar($_POST["idLibro"]);
 		}
 		if (@$_GET["accion"] == "eliminar" && $_GET["id"] > 0) {
 			$this->eliminar(intval($_GET["id"]));
 		}
 		if (@$_GET["accion"] == "editar" && $_GET["id"] > 0) {
 			$this->cargarPorId(intval($_GET["id"]));
-			die(json_encode($this->aParams["area"]));
+			die(json_encode($this->aParams["libro"]));
 		}
 		$this->consultar();
 		$this->mostarPlantilla();
 	}
 	private function guardar($id) {
-		$this->area->cargarPorId($id);
-		$this->area->setValues($_POST);
-		$this->area->save();
-		$resp = json_encode(array("msg"=>"El registro fue grabado. ID=".$this->area->getId(),"id"=>$this->area->getId()));
+		$this->libro->cargarPorId($id);
+		$this->libro->setValues($_POST);
+		$this->libro->save();
+		$resp = json_encode(array("msg"=>"El registro fue grabado. ID=".$this->libro->getId(),"id"=>$this->libro->getId()));
 		die($resp);
 	}
 	
 	public function cargarPorId($id){
-		$this->area->cargarPorId($id);
-		$this->aParams["area"] = array(
-				"idArea" => $this->area->getId(),
-				"area" => $this->area->getArea(),
-				"codigo" => $this->area->getCodigo(),
-				"descripcion" => $this->area->getDescripcion()
+		$this->libro->cargarPorId($id);
+		$this->aParams["libro"] = array(
+				"idLibro" => $this->libro->getId(),
+				"ISBN" => $this->libro->getISBN(),
+				"Titulo" => $this->libro->getTitulo(),
+				"Año" => $this->libro->getAño_publicación()
 				
 		);
 	}
 
 	private function eliminar($id) {
-		$this->area->cargarPorId($id);
-		$this->area->eliminar();
+		$this->libro->cargarPorId($id);
+		$this->libro->eliminar();
 		$this->aParams["message"] = "El registro fue eliminado";
 		$resp = json_encode(array("msg"=>$this->aParams["message"]));
 		die($resp);
@@ -55,7 +55,7 @@ class AreaController {
 
 	private function consultar() {
 		$this->aParams["areas"] = array();
-		$areas = $this->area->listarObj();
+		$areas = $this->libro->listarObj();
 		foreach ($areas as $area) {
 			$this->aParams["areas"][] = array(
 				"idArea" => $area->getId(),

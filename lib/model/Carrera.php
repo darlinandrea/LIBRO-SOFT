@@ -3,16 +3,15 @@ class Carrera{
 	private $idCarrera;
 	private $carrera;
 	private $codigo;
-	private $con;
-	public function __construct(&$db){
-		$this->con = $db;
+	protected $con;
+	public function __construct(){
+		$this->con = DBNative::get();
 	}
 	//Getters
 
 	public function getId(){
 		return $this->idCarrera;
-	}
-	public function getNombreId(){
+	}	public function getNombreId(){
 		return "idCarrera";
 	}
 	public function getIdCarrera(){
@@ -66,7 +65,7 @@ class Carrera{
 			$this->codigo = $result[0]['codigo'];
 		}
  	}
-	public function listar($filtros = array(), $orderBy = '', $limit = "0,30", $exactMatch = false){
+	public function listar($filtros = array(), $orderBy = '', $limit = "0,30", $exactMatch = false, $fields = '*'){
 		$whereA = array();
 		if(!$exactMatch){
 			$campos = $this->con->query("DESCRIBE carrera");
@@ -91,7 +90,7 @@ class Carrera{
 			$where = 1;
 		if ($orderBy != "")
 			$orderBy = "ORDER BY $orderBy";
-		$rows =$this->con->query("SELECT * FROM `carrera`  WHERE $where $orderBy LIMIT $limit");
+		$rows =$this->con->query("SELECT $fields,idCarrera FROM `carrera`  WHERE $where $orderBy LIMIT $limit");
 		$rowsI = array();
 		foreach($rows as $row){
 			$rowsI[$row["idCarrera"]] = $row;
@@ -99,12 +98,12 @@ class Carrera{
 		return $rowsI;
 	}
 	//como listar, pero retorna un array de objetos
-	function listarObj($filtros = array(), $orderBy = '', $limit = "0,30", $exactMatch = false){
+	function listarObj($filtros = array(), $orderBy = '', $limit = "0,30", $exactMatch = false, $fields = '*'){
 		$rowsr = array();
-		$rows = $this->listar($filtros, $orderBy, $limit, $exactMatch);
+		$rows = $this->listar($filtros, $orderBy, $limit, $exactMatch, $fields);
 		foreach($rows as $row){
-			$this->cargarPorId($row["idCarrera"]);
 			$obj = clone $this;
+			$obj->cargarPorId($row["idCarrera"]);
 			$rowsr[$row["idCarrera"]] = $obj;
 		}
 		return $rowsr;

@@ -7,16 +7,15 @@ class Ejemplar{
 	private $numero_pasillo;
 	private $estante;
 	private $numero_cajon;
-	private $con;
-	public function __construct(&$db){
-		$this->con = $db;
+	protected $con;
+	public function __construct(){
+		$this->con = DBNative::get();
 	}
 	//Getters
 
 	public function getId(){
 		return $this->idEjemplar;
-	}
-	public function getNombreId(){
+	}	public function getNombreId(){
 		return "idEjemplar";
 	}
 	public function getIdEjemplar(){
@@ -122,7 +121,7 @@ class Ejemplar{
 			$this->numero_cajon = $result[0]['numero_cajon'];
 		}
  	}
-	public function listar($filtros = array(), $orderBy = '', $limit = "0,30", $exactMatch = false){
+	public function listar($filtros = array(), $orderBy = '', $limit = "0,30", $exactMatch = false, $fields = '*'){
 		$whereA = array();
 		if(!$exactMatch){
 			$campos = $this->con->query("DESCRIBE ejemplar");
@@ -147,7 +146,7 @@ class Ejemplar{
 			$where = 1;
 		if ($orderBy != "")
 			$orderBy = "ORDER BY $orderBy";
-		$rows =$this->con->query("SELECT * FROM `ejemplar`  WHERE $where $orderBy LIMIT $limit");
+		$rows =$this->con->query("SELECT $fields,idEjemplar FROM `ejemplar`  WHERE $where $orderBy LIMIT $limit");
 		$rowsI = array();
 		foreach($rows as $row){
 			$rowsI[$row["idEjemplar"]] = $row;
@@ -155,12 +154,12 @@ class Ejemplar{
 		return $rowsI;
 	}
 	//como listar, pero retorna un array de objetos
-	function listarObj($filtros = array(), $orderBy = '', $limit = "0,30", $exactMatch = false){
+	function listarObj($filtros = array(), $orderBy = '', $limit = "0,30", $exactMatch = false, $fields = '*'){
 		$rowsr = array();
-		$rows = $this->listar($filtros, $orderBy, $limit, $exactMatch);
+		$rows = $this->listar($filtros, $orderBy, $limit, $exactMatch, $fields);
 		foreach($rows as $row){
-			$this->cargarPorId($row["idEjemplar"]);
 			$obj = clone $this;
+			$obj->cargarPorId($row["idEjemplar"]);
 			$rowsr[$row["idEjemplar"]] = $obj;
 		}
 		return $rowsr;

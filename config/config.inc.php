@@ -43,14 +43,14 @@ if (in_array($_SERVER['SERVER_ADDR'], array("127.0.0.1", "localhost")))
 	define("DSN", "mysql://" . DB_USER . ":" . DB_PASS . "@" . DB_SERVER . "/" .
 		DB_NAME);
 // Database Connection
-$con = new DBNative(DSN);
+DBNative::get(DSN);
 // UTF-8 Setup
-$utf8 = $con->query("SET NAMES 'utf8'");
-$utf81 = $con->query("SET character_set_results = 'utf8'");
-$utf82 = $con->query("SET character_set_client = 'utf8'");
-$utf83 = $con->query("SET character_set_connection = 'utf8'");
-$utf84 = $con->query("SET character_set_database = 'utf8'");
-$utf85 = $con->query("SET character_set_server = 'utf8'");
+$utf8 = DBNative::get()->query("SET NAMES 'utf8'");
+$utf81 = DBNative::get()->query("SET character_set_results = 'utf8'");
+$utf82 = DBNative::get()->query("SET character_set_client = 'utf8'");
+$utf83 = DBNative::get()->query("SET character_set_connection = 'utf8'");
+$utf84 = DBNative::get()->query("SET character_set_database = 'utf8'");
+$utf85 = DBNative::get()->query("SET character_set_server = 'utf8'");
 foreach (glob("lib/model/*.php") as $fileName)
 {
 	require $fileName;

@@ -2,16 +2,15 @@
 class EstadoEjemplar{
 	private $idEstado_Ejemplar;
 	private $estado;
-	private $con;
-	public function __construct(&$db){
-		$this->con = $db;
+	protected $con;
+	public function __construct(){
+		$this->con = DBNative::get();
 	}
 	//Getters
 
 	public function getId(){
 		return $this->idEstado_Ejemplar;
-	}
-	public function getNombreId(){
+	}	public function getNombreId(){
 		return "idEstado_Ejemplar";
 	}
 	public function getIdEstado_Ejemplar(){
@@ -56,7 +55,7 @@ class EstadoEjemplar{
 			$this->estado = $result[0]['estado'];
 		}
  	}
-	public function listar($filtros = array(), $orderBy = '', $limit = "0,30", $exactMatch = false){
+	public function listar($filtros = array(), $orderBy = '', $limit = "0,30", $exactMatch = false, $fields = '*'){
 		$whereA = array();
 		if(!$exactMatch){
 			$campos = $this->con->query("DESCRIBE estado_ejemplar");
@@ -81,7 +80,7 @@ class EstadoEjemplar{
 			$where = 1;
 		if ($orderBy != "")
 			$orderBy = "ORDER BY $orderBy";
-		$rows =$this->con->query("SELECT * FROM `estado_ejemplar`  WHERE $where $orderBy LIMIT $limit");
+		$rows =$this->con->query("SELECT $fields,idEstado_Ejemplar FROM `estado_ejemplar`  WHERE $where $orderBy LIMIT $limit");
 		$rowsI = array();
 		foreach($rows as $row){
 			$rowsI[$row["idEstado_Ejemplar"]] = $row;
@@ -89,12 +88,12 @@ class EstadoEjemplar{
 		return $rowsI;
 	}
 	//como listar, pero retorna un array de objetos
-	function listarObj($filtros = array(), $orderBy = '', $limit = "0,30", $exactMatch = false){
+	function listarObj($filtros = array(), $orderBy = '', $limit = "0,30", $exactMatch = false, $fields = '*'){
 		$rowsr = array();
-		$rows = $this->listar($filtros, $orderBy, $limit, $exactMatch);
+		$rows = $this->listar($filtros, $orderBy, $limit, $exactMatch, $fields);
 		foreach($rows as $row){
-			$this->cargarPorId($row["idEstado_Ejemplar"]);
 			$obj = clone $this;
+			$obj->cargarPorId($row["idEstado_Ejemplar"]);
 			$rowsr[$row["idEstado_Ejemplar"]] = $obj;
 		}
 		return $rowsr;
