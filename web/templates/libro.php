@@ -48,7 +48,7 @@ echo $msg;
     </tr>
     <tr>
       <td>Idioma</td>
-      <td>&nbsp;</td>
+      <td><input type="text" name="descripcion" id="descripcion" value="<?PHP echo $area["descripcion"];?>" /></td>
     </tr>
     <tr>
       <td>Palabras Claves</td>

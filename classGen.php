@@ -117,7 +117,7 @@ class <?PHP echo $clase;?>{
 foreach($campos as $campo)
 {
 ?>
-	private $<?PHP echo $campo["Field"];?>;
+	private $<?PHP echo lcfirst(str_replace(" ","",ucwords(str_replace("_"," ",$campo["Field"]))));?>;
 <?PHP
 }//foreach de campos
 ?>
@@ -136,7 +136,7 @@ if($campo["Field"]==$primary)//Un lindo "alias"
 	if($campo["Field"] != "id"){
 ?>
 	public function getId(){
-		return $this-><?PHP echo $campo["Field"];?>;
+		return $this-><?PHP echo lcfirst(str_replace(" ","",ucwords(str_replace("_"," ",$campo["Field"]))));?>;
 	}<?PHP } ?>
 	public function getNombreId(){
 		return "<?PHP echo $campo["Field"];?>";
@@ -145,7 +145,7 @@ if($campo["Field"]==$primary)//Un lindo "alias"
 }
 ?>
 	public function get<?PHP echo str_replace(" ","",ucwords(str_replace("_"," ",$campo["Field"])));?>(){
-		return $this-><?PHP echo $campo["Field"];?>;
+		return $this-><?PHP echo lcfirst(str_replace(" ","",ucwords(str_replace("_"," ",$campo["Field"]))));?>;
 	}
 <?PHP
 }//foreach de campos
@@ -163,7 +163,7 @@ foreach($foraneas as $campo => $foranea){
 	}
 	public function get<?PHP echo $nombreCampo;?>(){
 		$<?PHP echo lcfirst($foranea["tabla"])?> = new <?PHP echo $nombreCampo;?>($this->con);
-		$<?PHP echo lcfirst($foranea["tabla"])?>->cargarPorId($this-><?PHP echo $campo;?>);
+		$<?PHP echo lcfirst($foranea["tabla"])?>->cargarPorId($this-><?PHP echo lcfirst(str_replace(" ","",ucwords(str_replace("_"," ",$campo))));?>);
 		return $<?PHP echo lcfirst($foranea["tabla"])?>;
 	}
 <?PHP } ?>
@@ -173,29 +173,31 @@ foreach($foraneas as $campo => $foranea){
 <?PHP
 foreach($campos as $campo){
 ?>
-	public function set<?PHP echo str_replace(" ","",ucwords($campo["Field"]));?>($<?PHP echo $campo["Field"];?>){
-		$this-><?PHP echo $campo["Field"];?> = $<?PHP echo $campo["Field"];?>;
+	public function set<?PHP echo str_replace(" ","",ucwords(str_replace("_"," ",$campo["Field"])));?>($<?PHP echo lcfirst(str_replace(" ","",ucwords(str_replace("_"," ",$campo["Field"]))));?>){
+		$this-><?PHP echo lcfirst(str_replace(" ","",ucwords(str_replace("_"," ",$campo["Field"]))));?> = $<?PHP echo lcfirst(str_replace(" ","",ucwords(str_replace("_"," ",$campo["Field"]))));?>;
 	}
 <?PHP
 }//foreach de campos
 ?>
 	//LLena todos los atributos de la clase sacando los valores de un array
 	function setValues($array){
-		foreach($array as $key => $val)
+		foreach($array as $key => $val){
+			$key = lcfirst(str_replace(" ","",ucwords(str_replace("_"," ",$key))));
 			if(property_exists($this,$key))
 				$this->$key = $val;
+		}
 	}
 	
 	//Guarda o actualiza el objeto en la base de datos, la accion se determina por la clave primaria
 	public function save(){
-		if(empty($this-><?PHP echo $primary;?>)){			
-			$this-><?PHP echo $primary;?> = $this->con->autoInsert(array(
-			<?PHP foreach($camposP as $campo){?>"<?PHP echo $campo;?>" => $this->get<?PHP echo str_replace(" ","",ucwords($campo));?>(),
+		if(empty($this-><?PHP echo lcfirst(str_replace(" ","",ucwords(str_replace("_"," ",$primary))));?>)){			
+			$this-><?PHP echo lcfirst(str_replace(" ","",ucwords(str_replace("_"," ",$primary))));?> = $this->con->autoInsert(array(
+			<?PHP foreach($camposP as $campo){?>"<?PHP echo $campo;?>" => $this-><?PHP echo lcfirst(str_replace(" ","",ucwords(str_replace("_"," ",$campo))));?>,
 			<?PHP }?>),"<?PHP echo $tabla;?>");
 			return;
 		}
 		return $this->con->autoUpdate(array(
-			<?PHP foreach($camposP as $campo){?>"<?PHP echo $campo;?>" => $this->get<?PHP echo str_replace(" ","",ucwords($campo));?>(),
+			<?PHP foreach($camposP as $campo){?>"<?PHP echo $campo;?>" => $this-><?PHP echo lcfirst(str_replace(" ","",ucwords(str_replace("_"," ",$campo))));?>,
 			<?PHP }?>),"<?PHP echo $tabla;?>","<?PHP echo $primary?>=".$this->getId());
 	}
     
@@ -206,7 +208,7 @@ foreach($campos as $campo){
 foreach($campos as $campo)
 {
 ?>
-			$this-><?PHP echo $campo["Field"];?> = $result[0]['<?PHP echo $campo["Field"];?>'];
+			$this-><?PHP echo lcfirst(str_replace(" ","",ucwords(str_replace("_"," ",$campo["Field"]))));?> = $result[0]['<?PHP echo $campo["Field"];?>'];
 <?PHP
 }//foreach de campos
 ?>
