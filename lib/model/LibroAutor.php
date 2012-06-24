@@ -14,13 +14,13 @@ class LibroAutor{
 	}	public function getNombreId(){
 		return "idLibro_Autor";
 	}
-	public function getIdLibro_Autor(){
+	public function getIdLibroAutor(){
 		return $this->idLibro_Autor;
 	}
-	public function getId_libro(){
+	public function getIdLibro(){
 		return $this->id_libro;
 	}
-	public function getId_autor(){
+	public function getIdAutor(){
 		return $this->id_autor;
 	}
 	public function getByLibro($id_libro){

@@ -17,10 +17,10 @@ class Estudiante{
 	public function getIdEstudiante(){
 		return $this->idEstudiante;
 	}
-	public function getUsuario_idUsuario(){
+	public function getUsuarioIdUsuario(){
 		return $this->Usuario_idUsuario;
 	}
-	public function getId_carrera(){
+	public function getIdCarrera(){
 		return $this->id_carrera;
 	}
 	public function getByCarrera($id_carrera){

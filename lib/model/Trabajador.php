@@ -17,10 +17,10 @@ class Trabajador{
 	public function getIdTrabajador(){
 		return $this->idTrabajador;
 	}
-	public function getPerfil_idPerfil(){
+	public function getPerfilIdPerfil(){
 		return $this->Perfil_idPerfil;
 	}
-	public function getUsuario_idUsuario(){
+	public function getUsuarioIdUsuario(){
 		return $this->Usuario_idUsuario;
 	}
 	public function getByPerfil($Perfil_idPerfil){

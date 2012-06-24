@@ -24,7 +24,7 @@ class Editorial{
 	public function getCodigo(){
 		return $this->codigo;
 	}
-	public function getPais_origen(){
+	public function getPaisOrigen(){
 		return $this->pais_origen;
 	}
 

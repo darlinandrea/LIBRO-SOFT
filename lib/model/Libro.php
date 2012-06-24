@@ -25,7 +25,7 @@ class Libro{
 	public function getIdLibro(){
 		return $this->idLibro;
 	}
-	public function getId_area_conocimiento(){
+	public function getIdAreaConocimiento(){
 		return $this->id_area_conocimiento;
 	}
 	public function getISBN(){
@@ -34,16 +34,16 @@ class Libro{
 	public function getTitulo(){
 		return $this->titulo;
 	}
-	public function getAño_publicación(){
+	public function getAñoPublicación(){
 		return $this->año_publicación;
 	}
 	public function getIdioma(){
 		return $this->idioma;
 	}
-	public function getPalabras_claves(){
+	public function getPalabrasClaves(){
 		return $this->palabras_claves;
 	}
-	public function getId_editorial(){
+	public function getIdEditorial(){
 		return $this->id_editorial;
 	}
 	public function getCaratula(){
@@ -52,7 +52,7 @@ class Libro{
 	public function getArchivo(){
 		return $this->archivo;
 	}
-	public function getFecha_ingreso(){
+	public function getFechaIngreso(){
 		return $this->fecha_ingreso;
 	}
 	public function getByEditorial($id_editorial){

@@ -13,7 +13,7 @@ class EstadoEjemplar{
 	}	public function getNombreId(){
 		return "idEstado_Ejemplar";
 	}
-	public function getIdEstado_Ejemplar(){
+	public function getIdEstadoEjemplar(){
 		return $this->idEstado_Ejemplar;
 	}
 	public function getEstado(){

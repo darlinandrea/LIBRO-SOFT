@@ -23,7 +23,7 @@ class Usuario{
 	public function getIdUsuario(){
 		return $this->idUsuario;
 	}
-	public function getId_tipo_identificacion(){
+	public function getIdTipoIdentificacion(){
 		return $this->id_tipo_identificacion;
 	}
 	public function getNombres(){

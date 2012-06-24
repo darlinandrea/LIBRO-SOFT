@@ -13,7 +13,7 @@ class EstadoPrestamos{
 	}	public function getNombreId(){
 		return "idEstados_Prestamos";
 	}
-	public function getIdEstados_Prestamos(){
+	public function getIdEstadosPrestamos(){
 		return $this->idEstados_Prestamos;
 	}
 	public function getEstado(){

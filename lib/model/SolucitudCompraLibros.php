@@ -18,10 +18,10 @@ class SolucitudCompraLibros{
 	}	public function getNombreId(){
 		return "idSolucitud_Compra_Libros";
 	}
-	public function getIdSolucitud_Compra_Libros(){
+	public function getIdSolucitudCompraLibros(){
 		return $this->idSolucitud_Compra_Libros;
 	}
-	public function getId_usuario(){
+	public function getIdUsuario(){
 		return $this->id_usuario;
 	}
 	public function getEstado(){
@@ -36,7 +36,7 @@ class SolucitudCompraLibros{
 	public function getTitulo(){
 		return $this->titulo;
 	}
-	public function getFecha_solicitud(){
+	public function getFechaSolicitud(){
 		return $this->fecha_solicitud;
 	}
 	public function getByUsuario($id_usuario){

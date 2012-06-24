@@ -22,10 +22,10 @@ class Descargas{
 	public function getContador(){
 		return $this->contador;
 	}
-	public function getUsuario_idUsuario(){
+	public function getUsuarioIdUsuario(){
 		return $this->Usuario_idUsuario;
 	}
-	public function getLibro_idLibro(){
+	public function getLibroIdLibro(){
 		return $this->Libro_idLibro;
 	}
 	public function getFecha(){

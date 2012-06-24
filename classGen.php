@@ -144,7 +144,7 @@ if($campo["Field"]==$primary)//Un lindo "alias"
 <?PHP
 }
 ?>
-	public function get<?PHP echo str_replace(" ","",ucwords($campo["Field"]));?>(){
+	public function get<?PHP echo str_replace(" ","",ucwords(str_replace("_"," ",$campo["Field"])));?>(){
 		return $this-><?PHP echo $campo["Field"];?>;
 	}
 <?PHP

@@ -13,7 +13,7 @@ class EstadoMulta{
 	}	public function getNombreId(){
 		return "idEstado_Multa";
 	}
-	public function getIdEstado_Multa(){
+	public function getIdEstadoMulta(){
 		return $this->idEstado_Multa;
 	}
 	public function getEstado(){

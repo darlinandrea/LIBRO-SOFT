@@ -19,16 +19,16 @@ class Prestamo{
 	public function getIdPrestamo(){
 		return $this->idPrestamo;
 	}
-	public function getId_prestamista(){
+	public function getIdPrestamista(){
 		return $this->id_prestamista;
 	}
-	public function getId_estado(){
+	public function getIdEstado(){
 		return $this->id_estado;
 	}
-	public function getFecha_creacion(){
+	public function getFechaCreacion(){
 		return $this->fecha_creacion;
 	}
-	public function getFecha_devolucion(){
+	public function getFechaDevolucion(){
 		return $this->fecha_devolucion;
 	}
 	public function getByUsuario($id_prestamista){

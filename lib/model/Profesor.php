@@ -19,7 +19,7 @@ class Profesor{
 	public function getIdProfesor(){
 		return $this->idProfesor;
 	}
-	public function getUsuario_idUsuario(){
+	public function getUsuarioIdUsuario(){
 		return $this->Usuario_idUsuario;
 	}
 	public function getDependencia(){
@@ -28,7 +28,7 @@ class Profesor{
 	public function getTitulo(){
 		return $this->titulo;
 	}
-	public function getáreas_interés(){
+	public function getáreasInterés(){
 		return $this->áreas_interés;
 	}
 	public function getByUsuario($Usuario_idUsuario){

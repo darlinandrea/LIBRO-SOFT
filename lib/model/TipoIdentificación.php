@@ -13,7 +13,7 @@ class TipoIdentificación{
 	}	public function getNombreId(){
 		return "idTipo_Identificación";
 	}
-	public function getIdTipo_Identificación(){
+	public function getIdTipoIdentificación(){
 		return $this->idTipo_Identificación;
 	}
 	public function getNombre(){

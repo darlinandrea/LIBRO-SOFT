@@ -20,19 +20,19 @@ class Autor{
 	public function getIdAutor(){
 		return $this->idAutor;
 	}
-	public function getPrimer_nombre(){
+	public function getPrimerNombre(){
 		return $this->primer_nombre;
 	}
-	public function getSegundo_nombre(){
+	public function getSegundoNombre(){
 		return $this->segundo_nombre;
 	}
-	public function getPrimer_apellido(){
+	public function getPrimerApellido(){
 		return $this->primer_apellido;
 	}
-	public function getSegundo_apellido(){
+	public function getSegundoApellido(){
 		return $this->segundo_apellido;
 	}
-	public function getPais_nacionalidad(){
+	public function getPaisNacionalidad(){
 		return $this->pais_nacionalidad;
 	}
 

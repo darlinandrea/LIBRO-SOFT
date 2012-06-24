@@ -20,19 +20,19 @@ class Multa{
 	public function getIdMulta(){
 		return $this->idMulta;
 	}
-	public function getId_ejemplar(){
+	public function getIdEjemplar(){
 		return $this->id_ejemplar;
 	}
-	public function getId_prestamo(){
+	public function getIdPrestamo(){
 		return $this->id_prestamo;
 	}
-	public function getId_estado(){
+	public function getIdEstado(){
 		return $this->id_estado;
 	}
 	public function getMulta(){
 		return $this->multa;
 	}
-	public function getFecha_pago(){
+	public function getFechaPago(){
 		return $this->fecha_pago;
 	}
 	public function getByEjemplar($id_ejemplar){

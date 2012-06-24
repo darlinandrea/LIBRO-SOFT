@@ -21,22 +21,22 @@ class Ejemplar{
 	public function getIdEjemplar(){
 		return $this->idEjemplar;
 	}
-	public function getLibro_idLibro(){
+	public function getLibroIdLibro(){
 		return $this->Libro_idLibro;
 	}
-	public function getId_estado(){
+	public function getIdEstado(){
 		return $this->id_estado;
 	}
-	public function getNombre_sala(){
+	public function getNombreSala(){
 		return $this->nombre_sala;
 	}
-	public function getNumero_pasillo(){
+	public function getNumeroPasillo(){
 		return $this->numero_pasillo;
 	}
 	public function getEstante(){
 		return $this->estante;
 	}
-	public function getNumero_cajon(){
+	public function getNumeroCajon(){
 		return $this->numero_cajon;
 	}
 	public function getByLibro($Libro_idLibro){

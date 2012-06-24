@@ -13,7 +13,7 @@ class EstadoSolicitudCompra{
 	}	public function getNombreId(){
 		return "idEstado_Solicitud_Compra";
 	}
-	public function getIdEstado_Solicitud_Compra(){
+	public function getIdEstadoSolicitudCompra(){
 		return $this->idEstado_Solicitud_Compra;
 	}
 	public function getEstado(){

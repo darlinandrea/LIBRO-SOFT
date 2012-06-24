@@ -40,9 +40,8 @@ class AreaController {
 				"idLibro" => $this->libro->getId(),
 				"ISBN" => $this->libro->getISBN(),
 				"Titulo" => $this->libro->getTitulo(),
-				"Año" => $this->libro->getAño_publicación()
-				
-		);
+				"Año" => $this->libro->getAñoPublicación(),
+				"Area" => $this->libro->getArea()->getArea());
 	}
 
 	private function eliminar($id) {
@@ -54,20 +53,20 @@ class AreaController {
 	}
 
 	private function consultar() {
-		$this->aParams["areas"] = array();
-		$areas = $this->libro->listarObj();
-		foreach ($areas as $area) {
-			$this->aParams["areas"][] = array(
-				"idArea" => $area->getId(),
-				"area" => $area->getArea(),
-				"codigo" => $area->getCodigo(),
-				"descripcion" => $area->getDescripcion()
-			);
+		$this->aParams["libros"] = array();
+		$libros = $this->libro->listarObj();
+		foreach ($libros as $libro) {
+			$this->aParams["libros"][] = array(
+			"idLibro" => $libro->getId(),
+				"ISBN" => $libro->getISBN(),
+				"Titulo" => $libro->getTitulo(),
+				"Año" => $libro->getAñoPublicación(),
+				"Area" => $libro->getArea()->getArea());
 		}
 	}
 
 	private function mostarPlantilla() {
-		echo $this->motorDePlantilas->render("area", $this->aParams);
+		echo $this->motorDePlantilas->render("libro", $this->aParams);
 	}
 }
 ?>

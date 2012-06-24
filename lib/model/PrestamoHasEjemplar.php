@@ -14,13 +14,13 @@ class PrestamoHasEjemplar{
 	}	public function getNombreId(){
 		return "idPrestamo_Ejemplar";
 	}
-	public function getIdPrestamo_Ejemplar(){
+	public function getIdPrestamoEjemplar(){
 		return $this->idPrestamo_Ejemplar;
 	}
-	public function getPrestamo_idPrestamo(){
+	public function getPrestamoIdPrestamo(){
 		return $this->Prestamo_idPrestamo;
 	}
-	public function getEjemplar_idEjemplar(){
+	public function getEjemplarIdEjemplar(){
 		return $this->Ejemplar_idEjemplar;
 	}
 	public function getByPrestamo($Prestamo_idPrestamo){
